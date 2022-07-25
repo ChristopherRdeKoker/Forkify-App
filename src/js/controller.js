@@ -7,7 +7,7 @@ import 'regenerator-runtime/runtime';
 // console.log(icons);
 //shortcuts
 
-const recipeContainer = document.querySelector('.recipe');
+// const recipeContainer = document.querySelector('.recipe');
 const timeout = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
@@ -38,8 +38,6 @@ const controlRecipes = async function () {
     alert(err);
   }
 };
-
-// controlRecipes();
 
 ['hashchange', 'load'].forEach(ev =>
   window.addEventListener(ev, controlRecipes)
