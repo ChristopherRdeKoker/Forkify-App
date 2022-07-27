@@ -1,4 +1,4 @@
-// import { preventExtensions } from 'core-js/core/object';
+// import View from './View.js';
 
 class SearchView {
   #parentEl = document.querySelector('.search');
