@@ -7,6 +7,7 @@ import PaginationView from './views/paginationView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { async } from 'regenerator-runtime';
+import paginationView from './views/paginationView.js';
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -43,7 +44,7 @@ const controlSearchResults = async function () {
 
     //3) Render results
     // resultsView.render(model.state.search.results);
-    resultsView.render(model.getSearchResultsPage(2));
+    resultsView.render(model.getSearchResultsPage());
 
     //4) render initial pagination button
     PaginationView.render(model.state.search);
@@ -52,8 +53,17 @@ const controlSearchResults = async function () {
   }
 };
 
+const controlPagination = function (goToPage) {
+  //1) Render NEW results
+  resultsView.render(model.getSearchResultsPage(goToPage));
+
+  //2) Render NEW pagination buttons
+  PaginationView.render(model.state.search);
+};
+
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination);
 };
 init();
